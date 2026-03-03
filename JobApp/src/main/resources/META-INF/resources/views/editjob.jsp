@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Post a Job - JobApp</title>
+        <title>Edit Job - JobApp</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/style.css">
     </head>
@@ -25,37 +25,38 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card border-0 shadow-sm p-5">
-                        <h2 class="mb-4 fw-bold">Post a New Job</h2>
+                        <h2 class="mb-4 fw-bold">Edit Job #${jobPost.postId}</h2>
                         <hr class="mb-4">
 
-                        <form action="/handleForm" method="post">
+                        <form action="/updatejob" method="post">
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label for="postId" class="form-label">Job ID</label>
-                                    <input type="number" class="form-control" id="postId" name="postId" required>
+                                    <input type="number" class="form-control" id="postId" name="postId"
+                                        value="${jobPost.postId}" readonly>
                                 </div>
                                 <div class="col-md-8">
                                     <label for="postProfile" class="form-label">Job Profile</label>
                                     <input type="text" class="form-control" id="postProfile" name="postProfile"
-                                        placeholder="e.g. Java Developer" required>
+                                        placeholder="e.g. Java Developer" value="${jobPost.postProfile}" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="postDesc" class="form-label">Description</label>
                                     <textarea class="form-control" id="postDesc" name="postDesc" rows="4"
-                                        required></textarea>
+                                        required>${jobPost.postDesc}</textarea>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="reqExperience" class="form-label">Required Experience (Years)</label>
                                     <input type="number" class="form-control" id="reqExperience" name="reqExperience"
-                                        required>
+                                        value="${jobPost.reqExperience}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="postTechStack" class="form-label">Tech Stack (comma separated)</label>
                                     <input type="text" class="form-control" id="postTechStack" name="postTechStack"
-                                        placeholder="Java, Spring, etc." required>
+                                        placeholder="Java, Spring, etc." value="${jobPost.postTechStack}" required>
                                 </div>
                                 <div class="col-12 mt-4 text-end">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5">Publish Job</button>
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">Update Job</button>
                                 </div>
                             </div>
                         </form>

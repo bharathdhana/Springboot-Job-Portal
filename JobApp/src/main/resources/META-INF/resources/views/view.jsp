@@ -8,7 +8,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Job Board - JobApp</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="/style.css">
         </head>
 
         <body class="bg-light">
@@ -17,15 +17,24 @@
                     <a class="navbar-brand" href="/">JobApp</a>
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link" href="/">Home</a>
-                        <a class="btn btn-light ms-3" href="addjob">Post a Job</a>
+                        <a class="btn btn-light ms-3" href="/addjob">Post a Job</a>
                     </div>
                 </div>
             </nav>
 
             <main class="container mb-5">
-                <header class="mb-4">
-                    <h2 class="fw-bold">Current Openings</h2>
-                    <p class="text-muted">Showing all available developer roles.</p>
+                <header class="mb-4 d-flex justify-content-between align-items-end">
+                    <div>
+                        <h2 class="fw-bold">Current Openings</h2>
+                        <p class="text-muted mb-0">Showing all available developer roles.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <form action="/search" method="get" class="d-flex">
+                            <input class="form-control me-2" type="search" name="keyword" placeholder="Search jobs..."
+                                aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                        </form>
+                    </div>
                 </header>
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -44,8 +53,15 @@
                                         </c:forEach>
                                     </div>
                                 </div>
-                                <div class="card-footer bg-white border-0 p-4 pt-0">
+                                <div
+                                    class="card-footer bg-white border-0 p-4 pt-0 d-flex justify-content-between align-items-center">
                                     <small class="text-muted">Ref: #${job.postId}</small>
+                                    <div>
+                                        <a href="/editjob/${job.postId}"
+                                            class="btn btn-sm btn-outline-secondary me-1">Edit</a>
+                                        <a href="/deletejob/${job.postId}" class="btn btn-sm btn-outline-danger"
+                                            onclick="return confirm('Are you sure?')">Delete</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

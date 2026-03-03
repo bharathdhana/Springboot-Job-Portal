@@ -14,10 +14,27 @@ public class JobService {
     private JobRepo repo;
 
     public List<JobPost> getAllJobs() {
-        return repo.getAllJobs();
+        return repo.findAll();
     }
 
     public void addJob(JobPost jobPost) {
-        repo.addJob(jobPost);
+        repo.save(jobPost);
     }
+
+    public JobPost getJob(int postId) {
+        return repo.findById(postId).orElse(new JobPost());
+    }
+
+    public void deleteJob(int postId) {
+        repo.deleteById(postId);
+    }
+
+    public void updateJob(JobPost jobPost) {
+        repo.save(jobPost);
+    }
+
+    public List<JobPost> searchJob(String keyword) {
+        return repo.findByPostProfileContainingOrPostDescContaining(keyword, keyword);
+    }
+
 }
