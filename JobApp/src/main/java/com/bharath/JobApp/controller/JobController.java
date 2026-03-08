@@ -1,16 +1,14 @@
-package com.bharath.JobApp;
+package com.bharath.JobApp.controller;
 
 import com.bharath.JobApp.model.JobPost;
 import com.bharath.JobApp.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @Controller
 public class JobController {
@@ -20,7 +18,6 @@ public class JobController {
 
     @GetMapping({ "/", "home" })
     public String home() {
-        System.out.println("Home controller hit!");
         return "home";
     }
 
